@@ -1,21 +1,30 @@
 NAME = libftprintf.a
 
-HEADER = printf.h \
-	./includes/libft.h
+HEADER = ./includes/printf.h
 
-SRCS = ./includes/ft_putstr_fd.c \
-	./includes/ft_putnbr_fd.c \
-	./includes/ft_putchar_fd.c \
+SRCS = ./libft/ft_putchar_fd.c \
+	./libft/ft_isdigit.c \
 	./SRCS/printf.c \
-	./SRCS/print_X.c \
-	./SRCS/parse_args.c
+	./SRCS/print_arg.c \
+	./SRCS/parse_flags.c \
+	./tools/parse_arg_tool.c \
+	./tools/print_tools.c \
+	./tools/print_c.c \
+	./tools/print_s.c \
+	./tools/print_d.c
+	
+	
 
 SRCS_O = ft_putchar_fd.o \
-	ft_putnbr_fd.o \
-	ft_putstr_fd.o \
+	ft_isdigit.o \
 	printf.o \
-	print_X.o \
-	parse_args.o
+	print_arg.o \
+	parse_flags.o \
+	parse_arg_tool.o \
+	print_tools.o \
+	print_c.o \
+	print_s.o \
+	print_d.o
 
 BONUS_SRCS =
 

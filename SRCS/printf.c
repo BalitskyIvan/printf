@@ -16,9 +16,12 @@ int print(char *format, va_list ap)
 			i = print_arg(flag, ap, format, i);
 		}
 		else
+		{
+			ft_putchar_fd(format[i], 0);
 			i++;
+		}
 	}
-	write(1, '\0', 1);
+	write(0, "\0", 1);
 	return (i);
 }
 

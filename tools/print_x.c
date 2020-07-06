@@ -1,6 +1,6 @@
 #include "../includes/printf.h"
 
-int print_X()
+int print_x()
 {
 	
 }

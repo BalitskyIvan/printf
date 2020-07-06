@@ -14,12 +14,22 @@ typedef struct		Flag
 	int		iterator;
 	char	argType;
 }					Flag;
+
+int					int_size(int d);
+void				print_zero(int arg, int min_arg_size);
+void				print_char(char c, Flag flag);
+void				print_string(char *s, Flag flag);
+void				print_digit(int d, Flag flag);
+int					print_arg(Flag flag, va_list ap, char *format, int i);
+int					get_string_size(char *s);
+void				print_whitespaces(int count, int arg_size);
 int					set_max_arg_size(Flag *flag, char *format, int i);
 int					set_min_field_size(Flag *flag, char *format, int i);
 void				set_screen(Flag *flag, char c);
 void				set_left(Flag *flag, char c);
 void				set_zero(Flag *flag, char c);
 int					ft_isdigit(int ch);
+int					is_right_arg(char c);
 int					parse_args(Flag flag, char *format, va_list ap, int i);
 Flag				parse_flags(char *format, int i);
 int					ft_printf(char *format, ...);
