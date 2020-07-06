@@ -20,12 +20,13 @@ Flag	parse_flags(char *format, int i)
 	Flag	flag;
 
 	i++;
-	set_zero(&flag, format[i]);
-	set_left(&flag, format[i]);
-	set_screen(&flag, format[i]);
-	if (format[i] != '\0')
+	if (set_zero(&flag, format[i]) ||
+		set_left(&flag, format[i]) ||
+		set_screen(&flag, format[i]))
 		i++;
 	i = set_min_field_size(&flag, format, i);
+	if (format[i] == '.')
+		i++;
 	i = set_max_arg_size(&flag, format, i);
 	if (is_right_arg(format[i]))
 	{

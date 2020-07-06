@@ -21,7 +21,7 @@ int print(char *format, va_list ap)
 			i++;
 		}
 	}
-	write(0, "\0", 1);
+	write(0, 0, 1);
 	return (i);
 }
 

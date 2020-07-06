@@ -3,6 +3,8 @@ NAME = libftprintf.a
 HEADER = ./includes/printf.h
 
 SRCS = ./libft/ft_putchar_fd.c \
+	./libft/ft_putnbr_fd.c \
+	./libft/ft_putstr_fd.c \
 	./libft/ft_isdigit.c \
 	./SRCS/printf.c \
 	./SRCS/print_arg.c \
@@ -16,6 +18,8 @@ SRCS = ./libft/ft_putchar_fd.c \
 	
 
 SRCS_O = ft_putchar_fd.o \
+	ft_putnbr_fd.o \
+	ft_putstr_fd.o \
 	ft_isdigit.o \
 	printf.o \
 	print_arg.o \
@@ -32,7 +36,7 @@ O_FILE = $(SRCS:.c=.o)
 
 O_BONUS = $(BONUS_SRCS:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall
 
 all: $(NAME)
 
