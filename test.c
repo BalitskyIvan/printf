@@ -3,9 +3,9 @@
 
 int main()
 {
-	int c = -666;
+	int d = 345;
 	printf("\n +++++++++++ TEST PRINaT CHAR ++++++++++++++ \n");
-	ft_printf("%;-79;%%u\n", c);
+	ft_printf("%x\n", d);
 	//printf("%30c\n", c);
 	//printf("%-30c\n", c);
 	printf(" ------------ TEST PRINT CHAR END -------------- \n");

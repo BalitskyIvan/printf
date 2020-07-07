@@ -14,6 +14,8 @@ SRCS = ./libft/ft_putchar_fd.c \
 	./tools/print_c.c \
 	./tools/print_s.c \
 	./tools/print_d.c \
+	./tools/print_u.c \
+	./tools/print_x.c \
 	./tools/print_percent.c
 	
 	
@@ -30,6 +32,8 @@ SRCS_O = ft_putchar_fd.o \
 	print_c.o \
 	print_s.o \
 	print_d.o \
+	print_u.o \
+	print_x.o \
 	print_percent.o
 
 BONUS_SRCS =

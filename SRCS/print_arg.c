@@ -36,8 +36,9 @@ int	print_arg(Flag flag, va_list ap, char *format, int i)
 		if (flag.argType == 'd' || flag.argType == 'i')
 			print_digit(va_arg(ap, int), flag);
 		if (flag.argType == 'u')
-			print_digit(va_arg(ap, unsigned int), flag);
-		//if (flag.argType == "x" || flag.argType == "X")
+			print_unsigned_dec(va_arg(ap, unsigned int), flag);
+		if (flag.argType == 'x' || flag.argType == 'X')
+			print_x(va_arg(ap, unsigned int), flag);
 		i = pass_arg(format, i);
 	}
 	return (i);

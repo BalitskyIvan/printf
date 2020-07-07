@@ -17,6 +17,19 @@ int		int_size(int d)
 	return (i);
 }
 
+int		u_int_size(unsigned int u)
+{
+	int i;
+
+	i = 1;
+	while (u > 0)
+	{
+		u /= 10;
+		i++;
+	}
+	return (i);
+}
+
 void	print_whitespaces(int count, int arg_size)
 {
 	count -= arg_size;
@@ -27,12 +40,9 @@ void	print_whitespaces(int count, int arg_size)
 	}
 }
 
-void	print_zero(int arg, int min_arg_size)
+void	print_zero(int size, int min_arg_size)
 {
-	int	i;
-
-	i = int_size(arg);
-	while (min_arg_size > i)
+	while (min_arg_size > size)
 	{
 		ft_putchar_fd('0', 0);
 		min_arg_size--;

@@ -1,8 +1,15 @@
 #include "../includes/printf.h"
 
-int print_x()
+void	print_hex(char *hex)
 {
+	int i;
 	
+	i = 0;
+	while(hex[i])
+	{
+		ft_putchar_fd(hex[i], 1);
+		i++;
+	}
 }
 
 char *convert_hex(int is_upper, int val)
@@ -30,4 +37,37 @@ char *convert_hex(int is_upper, int val)
 		val /= 16;
 	}
 	return (res);
+}
+
+int print_x(unsigned int x, Flag flag)
+{
+	char *res;
+	int		is_upper;
+	
+	
+	is_upper = 0;
+	if (flag.argType == 'X')
+		is_upper = 1;
+	res = convert_hex(is_upper, x);
+	if (flag.isPrintLeft)
+	{
+		if (x < 0)
+			ft_putchar_fd('-', 0);
+		if (flag.isPrintNull)
+			print_zero(get_string_size(res), flag.minValue);
+		print_hex(res);
+		print_whitespaces(flag.minField, get_string_size(res));
+	}
+	else
+	{
+		print_whitespaces(flag.minField, get_string_size(res));
+		if (x < 0)
+			ft_putchar_fd('-', 0);
+		if (flag.isPrintNull)
+		{
+			print_zero(get_string_size(res), flag.minValue);
+		}
+		print_hex(res);
+	}
+	return (0);
 }

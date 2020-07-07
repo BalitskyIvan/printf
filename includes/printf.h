@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct		Flag
 {
@@ -15,12 +16,15 @@ typedef struct		Flag
 }					Flag;
 
 int					int_size(int d);
-void				print_zero(int arg, int min_arg_size);
+int					u_int_size(unsigned int u);
+void				print_zero(int size, int min_arg_size);
 void				print_char(char c, Flag flag);
 void				print_string(char *s, Flag flag);
 void				print_digit(int d, Flag flag);
+int					print_x(unsigned int x, Flag flag);
 int					print_arg(Flag flag, va_list ap, char *format, int i);
 void				print_percent(Flag flag);
+void				print_unsigned_dec(unsigned int u, Flag flag);
 int					get_string_size(char *s);
 void				print_whitespaces(int count, int arg_size);
 void				set_max_arg_size(Flag *flag, char *format, int i);
