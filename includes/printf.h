@@ -6,7 +6,6 @@
 
 typedef struct		Flag
 {
-	int		isPrintScreen;
 	int		isPrintNull;
 	int		isPrintLeft;
 	int		minField;
@@ -21,11 +20,13 @@ void				print_char(char c, Flag flag);
 void				print_string(char *s, Flag flag);
 void				print_digit(int d, Flag flag);
 int					print_arg(Flag flag, va_list ap, char *format, int i);
+void				print_percent(Flag flag);
 int					get_string_size(char *s);
 void				print_whitespaces(int count, int arg_size);
-int					set_max_arg_size(Flag *flag, char *format, int i);
-int					set_min_field_size(Flag *flag, char *format, int i);
-int					set_left_or_zero(Flag *flag, char *format, int i);
+void				set_max_arg_size(Flag *flag, char *format, int i);
+void				set_min_field_size(Flag *flag, char *format, int i);
+void				set_left_or_zero(Flag *flag, char *format, int i);
+void				set_arg(Flag *flag, char *format, int i);
 int					ft_isdigit(int ch);
 int					is_right_arg(char c);
 int					parse_args(Flag flag, char *format, va_list ap, int i);

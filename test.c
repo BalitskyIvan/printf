@@ -3,17 +3,11 @@
 
 int main()
 {
-	int c = 'a';
-	write(0, "testc\n\0", 6);
-	//ft_printf("%%%;cugyug\n", c);
-	// ft_printf("%30c\n", c);
-	// ft_printf("%-30c\n", c);
-	
-	write(0, "testcend\0", 9);
+	int c = -666;
 	printf("\n +++++++++++ TEST PRINaT CHAR ++++++++++++++ \n");
-	printf("%-050d\n", c);
+	ft_printf("%;-79;%%u\n", c);
 	//printf("%30c\n", c);
-//	printf("%-30c\n", c);
+	//printf("%-30c\n", c);
 	printf(" ------------ TEST PRINT CHAR END -------------- \n");
 	return (0);
 }
