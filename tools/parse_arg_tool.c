@@ -1,44 +1,35 @@
 #include "../includes/printf.h"
 
-int	set_zero(Flag *flag, char c)
+int		is_right_arg(char c)
 {
-	if (c == '0')
-	{
-		flag->isPrintNull = 1;
+	if (c == 'c' ||
+		c == 's' ||
+		c == 'p' ||
+		c == 'd' ||
+		c == 'i' ||
+		c == 'u' ||
+		c == 'x' ||
+		c == 'X' ||
+		c == '%')
 		return (1);
-	}
 	else
-	{
-		flag->isPrintNull = 0;
 		return (0);
-	}
 }
 
-int	set_left(Flag *flag, char c)
+int	set_left_or_zero(Flag *flag, char *format, int i)
 {
-	if (c == '-')
-	{
-		flag->isPrintLeft = 1;
-		return (1);
-	}
-	else
-	{
-		flag->isPrintLeft = 0;
-		return (0);
-	}
-}
+	int i2;
 
-int	set_screen(Flag *flag, char c)
-{
-	if (c == '%')
+	i2 = i;
+	while (!ft_isdigit(format[i]) && !is_right_arg(format[i])
+			&& format[i] != '-')
 	{
-		flag->isPrintScreen = 1;
-		return (1);
-	}
-	else
-	{
-		flag->isPrintScreen = 0;
-		return (0);
+		if (format[i] == '-')
+		{
+			flag->isPrintLeft = 1;
+			return (i);
+		}
+		i++;
 	}
 }
 

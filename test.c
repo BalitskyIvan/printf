@@ -3,17 +3,17 @@
 
 int main()
 {
-	//printf(" +++++++++++ TEST PRINT CHAR ++++++++++++++ \n");
-	int d = -21324443;
-	// printf("PRINTF: \n");
-	// printf("%c", c);
-	// printf("\n----MY: \n");
-	printf("%030dmth", d);
-	//printf("%100csmth", c);
-	// printf("\nPRINTF: \n");
-	// printf("%666c", c);
-	// printf("\n----MY: \n");
-	// ft_printf("%666c", c);
-	//printf(" ------------ TEST PRINT CHAR END -------------- \n");
+	int c = 'a';
+	write(0, "testc\n\0", 6);
+	//ft_printf("%%%;cugyug\n", c);
+	// ft_printf("%30c\n", c);
+	// ft_printf("%-30c\n", c);
+	
+	write(0, "testcend\0", 9);
+	printf("\n +++++++++++ TEST PRINaT CHAR ++++++++++++++ \n");
+	printf("%-050d\n", c);
+	//printf("%30c\n", c);
+//	printf("%-30c\n", c);
+	printf(" ------------ TEST PRINT CHAR END -------------- \n");
 	return (0);
 }

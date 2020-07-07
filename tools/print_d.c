@@ -16,5 +16,4 @@ void	print_digit(int d, Flag flag)
 			print_zero(d, flag.minValue);
 		ft_putnbr_fd(d, 0);
 	}
-	
 }

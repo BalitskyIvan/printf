@@ -21,7 +21,6 @@ int print(char *format, va_list ap)
 			i++;
 		}
 	}
-	write(0, 0, 1);
 	return (i);
 }
 
@@ -33,5 +32,6 @@ int ft_printf(char *format, ...)
 	va_start(ap, format);
 	arg_count = print(format, ap);
 	va_end(ap);
+	write(0, "\0", 1);
 	return(arg_count);
 }
