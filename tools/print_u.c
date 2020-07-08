@@ -12,23 +12,38 @@ static void	print_u(unsigned int u)
 	
 }
 
-void		print_unsigned_dec(unsigned int u, Flag flag)
+int			print_unsigned_dec(unsigned int u, Flag flag)
 {
-	unsigned int res;
+	unsigned int	res;
+	int				min_val;
+	int				i;
 	
+	i = 0;
 	res = 4294967295 + 1 + u;
+	if (u_int_size(res) < flag.minValue)
+		min_val = flag.minValue;
+	else
+		min_val = u_int_size(res);
 	if (flag.isPrintLeft)
 	{
-		if (flag.isPrintNull)
-			print_zero(u_int_size(u), flag.minValue);
+		if (flag.minValue > u_int_size(res))
+			i += print_zero(u_int_size(u), flag.minValue);
+		else if (flag.minField > u_int_size(u) && flag.isPrintNull)
+			i += print_zero(u_int_size(u), flag.minValue);
 		print_u(u);
-		print_whitespaces(flag.minField, u_int_size(u));
+		if(!flag.isPrintNull)
+			i += print_whitespaces(flag.minField, u_int_size(u));
 	}
 	else
 	{
-		print_whitespaces(flag.minField, u_int_size(u));
-		if (flag.isPrintNull)
-			print_zero(u_int_size(u), flag.minValue);
+		if(!flag.isPrintNull)
+			i += print_whitespaces(flag.minField, u_int_size(u));
+		if (flag.minValue > u_int_size(res))
+			i += print_zero(u_int_size(u), flag.minValue);
+		else if (flag.minField > u_int_size(u) && flag.isPrintNull)
+			i += print_zero(u_int_size(u), flag.minValue);
 		print_u(u);
 	}
+	i += u_int_size(u);
+	return (i);
 }

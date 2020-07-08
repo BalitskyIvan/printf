@@ -30,23 +30,33 @@ int		u_int_size(unsigned int u)
 	return (i);
 }
 
-void	print_whitespaces(int count, int arg_size)
+int		print_whitespaces(int count, int arg_size)
 {
+	int i;
+	
+	i = 0;
 	count -= arg_size;
 	while (count > 0)
 	{
-		ft_putchar_fd(' ', 0);
+		i++;
+		ft_putchar_fd(' ', 1);
 		count--;
 	}
+	return (i);
 }
 
-void	print_zero(int size, int min_arg_size)
+int		print_zero(int size, int min_arg_size)
 {
+	int i;
+	
+	i = 0;
 	while (min_arg_size > size)
 	{
-		ft_putchar_fd('0', 0);
+		i++;
+		ft_putchar_fd('0', 1);
 		min_arg_size--;
 	}
+	return (i);
 }
 
 int		get_string_size(char *s)

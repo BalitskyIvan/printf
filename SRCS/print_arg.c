@@ -1,16 +1,16 @@
 #include "../includes/printf.h"
 
-int	print_sym(char *format, int i)
+void	print_sym(char *format, Counter *counter)
 {
-	while (format[i] != '%' && format[i] != '\0')
+	while (format[counter->iterator] != '%' && format[counter->iterator] != '\0')
 	{
-		ft_putchar_fd(format[i], 0);
-		i++;
+		ft_putchar_fd(format[counter->iterator], 0);
+		counter->iterator++;
+		counter->size++;
 	}
-	return (i);
 }
 
-int	pass_arg(char *format, int i)
+int		pass_arg(char *format, int i)
 {
 	while (is_right_arg(format[i]) != 1 && 
 			format[i] != '\0')
@@ -20,26 +20,30 @@ int	pass_arg(char *format, int i)
 	return (i);
 }
 
-int	print_arg(Flag flag, va_list ap, char *format, int i)
+Counter		print_arg(Flag flag, va_list ap, char *format, Counter counter)
 {
-	i++;
+	counter.iterator++;
 	if (flag.argType == 0)
-		i = print_sym(format, i);
+		print_sym(format, &counter);
 	else
 	{
 		if (flag.argType == 'c')
-			print_char(va_arg(ap, int), flag);
+			counter.size += print_char(va_arg(ap, int), flag);
 		if (flag.argType == 's')
-			print_string(va_arg(ap, char *), flag);
+			counter.size += print_string(va_arg(ap, char *), flag);
 		if (flag.argType == '%')
-			print_percent(flag);
+			counter.size += print_percent(flag);
 		if (flag.argType == 'd' || flag.argType == 'i')
-			print_digit(va_arg(ap, int), flag);
+			counter.size += print_digit(va_arg(ap, int), flag);
 		if (flag.argType == 'u')
-			print_unsigned_dec(va_arg(ap, unsigned int), flag);
+			counter.size += print_unsigned_dec(va_arg(ap, unsigned int), flag);
+		if (flag.argType == 'p')
+			counter.size += print_p(va_arg(ap, unsigned long long), flag);
 		if (flag.argType == 'x' || flag.argType == 'X')
-			print_x(va_arg(ap, unsigned int), flag);
-		i = pass_arg(format, i);
+			counter.size += print_x(va_arg(ap, unsigned int), flag);
+		if (flag.argType == 'n')
+			write_n(va_arg(ap, int), counter.size);
+		counter.iterator = pass_arg(format, counter.iterator);
 	}
-	return (i);
+	return (counter);
 }

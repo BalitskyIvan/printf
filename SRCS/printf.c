@@ -4,24 +4,26 @@
 
 int print(char *format, va_list ap)
 {
-	int i;
 	Flag flag;
+	Counter counter;
 
-	i = 0;
-	while (format[i])
+	counter.iterator = 0;
+	counter.size = 0;
+	while (format[counter.iterator])
 	{
-		if (format[i] == '%')
+		if (format[counter.iterator] == '%')
 		{
-			flag = parse_flags(format, i);
-			i = print_arg(flag, ap, format, i);
+			flag = parse_flags(format, counter.iterator);
+			counter = print_arg(flag, ap, format, counter);
 		}
 		else
 		{
-			ft_putchar_fd(format[i], 0);
-			i++;
+			ft_putchar_fd(format[counter.iterator], 0);
+			counter.iterator++;
+			counter.size++;
 		}
 	}
-	return (i);
+	return (counter.iterator);
 }
 
 int ft_printf(char *format, ...)

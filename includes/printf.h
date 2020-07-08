@@ -15,18 +15,26 @@ typedef struct		Flag
 	char	argType;
 }					Flag;
 
+typedef struct		Counter
+{
+	int		iterator;
+	int		size;
+}					Counter;
+
 int					int_size(int d);
 int					u_int_size(unsigned int u);
-void				print_zero(int size, int min_arg_size);
-void				print_char(char c, Flag flag);
-void				print_string(char *s, Flag flag);
-void				print_digit(int d, Flag flag);
+int					print_zero(int size, int min_arg_size);
+int					print_char(char c, Flag flag);
+int					print_string(char *s, Flag flag);
+int					print_digit(int d, Flag flag);
 int					print_x(unsigned int x, Flag flag);
-int					print_arg(Flag flag, va_list ap, char *format, int i);
-void				print_percent(Flag flag);
-void				print_unsigned_dec(unsigned int u, Flag flag);
+void				write_n(int *x, int count);
+int					print_p(unsigned long long x, Flag flag);
+Counter				print_arg(Flag flag, va_list ap, char *format, Counter counter);
+int					print_percent(Flag flag);
+int					print_unsigned_dec(unsigned int u, Flag flag);
 int					get_string_size(char *s);
-void				print_whitespaces(int count, int arg_size);
+int					print_whitespaces(int count, int arg_size);
 void				set_max_arg_size(Flag *flag, char *format, int i);
 void				set_min_field_size(Flag *flag, char *format, int i);
 void				set_left_or_zero(Flag *flag, char *format, int i);
