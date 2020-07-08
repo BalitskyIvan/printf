@@ -42,7 +42,7 @@ Counter		print_arg(Flag flag, va_list ap, char *format, Counter counter)
 		if (flag.argType == 'x' || flag.argType == 'X')
 			counter.size += print_x(va_arg(ap, unsigned int), flag);
 		if (flag.argType == 'n')
-			write_n(va_arg(ap, int), counter.size);
+			*va_arg(ap, int*) = counter.size;
 		counter.iterator = pass_arg(format, counter.iterator);
 	}
 	return (counter);

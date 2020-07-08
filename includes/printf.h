@@ -28,7 +28,7 @@ int					print_char(char c, Flag flag);
 int					print_string(char *s, Flag flag);
 int					print_digit(int d, Flag flag);
 int					print_x(unsigned int x, Flag flag);
-void				write_n(int *x, int count);
+void				write_n(va_list ap, int count);
 int					print_p(unsigned long long x, Flag flag);
 Counter				print_arg(Flag flag, va_list ap, char *format, Counter counter);
 int					print_percent(Flag flag);
