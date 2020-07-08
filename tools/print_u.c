@@ -32,12 +32,12 @@ int			print_unsigned_dec(unsigned int u, Flag flag)
 			i += print_zero(u_int_size(u), flag.minValue);
 		print_u(u);
 		if(!flag.isPrintNull)
-			i += print_whitespaces(flag.minField, u_int_size(u));
+			i += print_whitespaces(flag.minField, min_val);
 	}
 	else
 	{
 		if(!flag.isPrintNull)
-			i += print_whitespaces(flag.minField, u_int_size(u));
+			i += print_whitespaces(flag.minField, min_val);
 		if (flag.minValue > u_int_size(res))
 			i += print_zero(u_int_size(u), flag.minValue);
 		else if (flag.minField > u_int_size(u) && flag.isPrintNull)
