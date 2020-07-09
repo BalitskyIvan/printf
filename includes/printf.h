@@ -21,19 +21,28 @@ typedef struct		Counter
 	int		size;
 }					Counter;
 
+typedef struct		FloatConverter
+{
+	char	*str1;
+	char	*str2;
+	int		is_minus;
+}					FloatConverter;
+
 int					int_size(int d);
 int					u_int_size(unsigned int u);
+int					get_string_size(char *s);
+int					sizeof_double(double d);
 int					print_zero(int size, int min_arg_size);
 int					print_char(char c, Flag flag);
 int					print_string(char *s, Flag flag);
 int					print_digit(int d, Flag flag);
 int					print_x(unsigned int x, Flag flag);
 int					print_p(unsigned long long x, Flag flag);
-int					print_f(float f, Flag flag);
+int					print_f(double f, Flag flag);
+int					print_e(double f, Flag flag);
 Counter				print_arg(Flag flag, va_list ap, char *format, Counter counter);
 int					print_percent(Flag flag);
 int					print_unsigned_dec(unsigned int u, Flag flag);
-int					get_string_size(char *s);
 int					print_whitespaces(int count, int arg_size);
 void				set_max_arg_size(Flag *flag, char *format, int i);
 void				set_min_field_size(Flag *flag, char *format, int i);
@@ -47,4 +56,5 @@ int					ft_printf(char *format, ...);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+FloatConverter		convert_to_char(double f, int after_dot);
 #endif

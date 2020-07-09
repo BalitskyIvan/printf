@@ -41,6 +41,10 @@ Counter		print_arg(Flag flag, va_list ap, char *format, Counter counter)
 			counter.size += print_p(va_arg(ap, unsigned long long), flag);
 		if (flag.argType == 'x' || flag.argType == 'X')
 			counter.size += print_x(va_arg(ap, unsigned int), flag);
+		if (flag.argType == 'f')
+			counter.size += print_f(va_arg(ap, double), flag);
+		if (flag.argType == 'e')
+			counter.size += print_e(va_arg(ap, double), flag);
 		if (flag.argType == 'n')
 			*va_arg(ap, int*) = counter.size;
 		counter.iterator = pass_arg(format, counter.iterator);
