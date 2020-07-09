@@ -13,12 +13,12 @@ int print(char *format, va_list ap)
 	{
 		if (format[counter.iterator] == '%')
 		{
-			flag = parse_flags(format, counter.iterator);
+			flag = parse_flags(format, ap, counter.iterator);
 			counter = print_arg(flag, ap, format, counter);
 		}
 		else
 		{
-			ft_putchar_fd(format[counter.iterator], 0);
+			ft_putchar_fd(format[counter.iterator], 1);
 			counter.iterator++;
 			counter.size++;
 		}

@@ -10,10 +10,6 @@ int		is_right_arg(char c)
 		c == 'u' ||
 		c == 'x' ||
 		c == 'X' ||
-		c == 'n' ||
-		c == 'f' ||
-		c == 'g' ||
-		c == 'e' ||
 		c == '%')
 		return (1);
 	else
