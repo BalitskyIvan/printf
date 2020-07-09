@@ -31,21 +31,29 @@ unsigned long long	get_whole(double d)
 int get_fract(double f, unsigned long long whole, int after_dot)
 {
 	double	doub;
+	double	d2;
 	int		res;
 	int		size;
+	int		i;
 
 	size = 6;
+	i = 1;
+	res = 0;
 	if (f < 0)
 		f *= -1;
 	doub = f - whole;
+	d2 = doub;
 	if (after_dot != -1 && after_dot != size)
 		size = after_dot;
-	while (size > 0)
+	while (size >= 0 && d2 - res > 0)
 	{
-		doub *= 10;
+		printf("dob %f", d2);
+		printf("RES %d", res);
+		res = doub * i;
+		i *= 10;
+		d2 *= 10;
 		size--;
 	}
-	res = doub;
 	if ((doub - res) * 10 > 5)
 		res += 1;
 	return (res);

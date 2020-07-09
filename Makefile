@@ -19,6 +19,7 @@ SRCS = ./libft/ft_putchar_fd.c \
 	./tools/print_p.c \
 	./tools/print_f.c \
 	./tools/print_e.c \
+	./tools/print_g.c \
 	./tools/print_f_tools.c \
 	./tools/print_percent.c
 	
@@ -41,6 +42,7 @@ SRCS_O = ft_putchar_fd.o \
 	print_p.o \
 	print_f.o \
 	print_e.o \
+	print_g.o \
 	print_f_tools.o \
 	print_percent.o
 

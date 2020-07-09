@@ -40,6 +40,7 @@ int					print_x(unsigned int x, Flag flag);
 int					print_p(unsigned long long x, Flag flag);
 int					print_f(double f, Flag flag);
 int					print_e(double f, Flag flag);
+int					print_g(double f, Flag flag);
 Counter				print_arg(Flag flag, va_list ap, char *format, Counter counter);
 int					print_percent(Flag flag);
 int					print_unsigned_dec(unsigned int u, Flag flag);
