@@ -8,7 +8,7 @@ int	put_string(char *s, int max_size)
 	i = 0;
 	while (s[i] && i < max_size)
 	{
-		ft_putchar_fd(s[i], 0);
+		ft_putchar_fd(s[i], 1);
 		i++;
 	}
 	return (i);
@@ -19,7 +19,7 @@ int	print_string(char *s, Flag flag)
 	int	min_val;
 	int	min_field;
 	int i;
-	
+
 	i = 0;
 	if (flag.minValue != -1)
 		min_val = flag.minValue;
