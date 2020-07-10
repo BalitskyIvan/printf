@@ -9,9 +9,12 @@ int		int_size(int d)
 		return (10);
 	else if (d < 0)
 		d *= -1;
-	while (d > 0)
+	while (d >= 0)
 	{
-		d /= 10;
+		if (d == 0)
+			d = -1;
+		else
+			d /= 10;
 		i++;
 	}
 	return (i);
@@ -22,6 +25,8 @@ int		u_int_size(unsigned int u)
 	int i;
 
 	i = 1;
+	if (u == 0)
+		i++;
 	while (u > 0)
 	{
 		u /= 10;

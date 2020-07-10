@@ -7,13 +7,13 @@ int	print_percent(Flag flag)
 	i = 1;
 	if (flag.isPrintLeft)
 	{
-		ft_putchar_fd('%', 0);
+		ft_putchar_fd('%', 1);
 		i += print_whitespaces(flag.minField, 1);
 	}
 	else
 	{
 		i += print_whitespaces(flag.minField, 1);
-		ft_putchar_fd('%', 0);
+		ft_putchar_fd('%', 1);
 	}
 	return (i);
 }

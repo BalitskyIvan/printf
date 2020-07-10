@@ -4,7 +4,8 @@ void	print_sym(char *format, Counter *counter)
 {
 	while (format[counter->iterator] != '%' && format[counter->iterator] != '\0')
 	{
-		ft_putchar_fd(format[counter->iterator], 1);
+		if (format[counter->iterator] != ' ')
+			ft_putchar_fd(format[counter->iterator], 1);
 		counter->iterator++;
 		counter->size++;
 	}

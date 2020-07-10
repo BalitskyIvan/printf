@@ -37,7 +37,7 @@ int					print_percent(Flag flag);
 Counter				print_arg(Flag flag, va_list ap, char *format, Counter counter);
 int					print_whitespaces(int count, int arg_size);
 void				set_max_arg_size(Flag *flag, char *format, int i);
-void				set_min_field_size(Flag *flag, char *format, int i);
+void				set_min_field_size(Flag *flag, va_list ap, char *format, int i);
 void				set_left_or_zero(Flag *flag, char *format, int i);
 void				set_arg(Flag *flag, char *format, int i);
 int					ft_isdigit(int ch);

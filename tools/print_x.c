@@ -12,12 +12,12 @@ static void	print_hex(char *hex)
 	}
 }
 
-static char *convert_hex(int is_upper, int val)
+static char *convert_hex(int is_upper, unsigned int val)
 {
-	char	*hex;
-	char	*res;
-	int		count;
-	int		val_copy;
+	char			*res;
+	char			*hex;
+	int				count;
+	unsigned int	val_copy;
 
 	count = 0;
 	val_copy = val;
@@ -69,13 +69,11 @@ int print_x(unsigned int x, Flag flag)
 		else if (flag.minField > get_string_size(res) && flag.isPrintNull)
 			i += print_zero(get_string_size(res), flag.minField);
 		print_hex(res);
-		if (!flag.isPrintNull)
-			i += print_whitespaces(flag.minField, min_val);
+		i += print_whitespaces(flag.minField, min_val);
 	}
 	else
 	{
-		if (!flag.isPrintNull)
-			i += print_whitespaces(flag.minField, min_val);
+		i += print_whitespaces(flag.minField, min_val);
 		if (x < 0)
 		{
 			ft_putchar_fd('-', 1);

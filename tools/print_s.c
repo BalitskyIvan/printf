@@ -21,7 +21,9 @@ int	print_string(char *s, Flag flag)
 	int i;
 
 	i = 0;
-	if (flag.minValue != -1)
+	if (s == NULL)
+		s = "(null)";
+	if (flag.minValue != -1 && flag.minValue < get_string_size(s))
 		min_val = flag.minValue;
 	else 
 		min_val = get_string_size(s);
