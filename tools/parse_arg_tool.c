@@ -96,19 +96,7 @@ void	set_max_arg_size(Flag *flag, char *format, int i)
 			res = 0;
 			flag_to_del = 0;
 			while (!is_right_arg(format[i]) && format[i] && !ft_isdigit(format[i]))
-			{
-				if (format[i] == '*')
-				{
-					res = va_arg(ap, int);
-					if (res < 0)
-					{
-						flag->isPrintLeft = 1;
-						res *= -1;
-					}
-					flag->minField = res;
-					i++;
-			}
-			}
+				i++;
 			while(ft_isdigit(format[i]) && format[i])
 			{
 				flag_to_del = 1;
