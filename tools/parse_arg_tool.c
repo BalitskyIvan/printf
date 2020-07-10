@@ -45,14 +45,13 @@ void	set_left_or_zero(Flag *flag, char *format, int i)
 	}
 }
 
-void	set_min_field_size(Flag *flag, va_list ap, char *format, int i)
+int		set_min_field_size(Flag *flag, va_list ap, char *format, int i)
 {
 	int res;
 	int flag_to_del;
 
 	res = 0;
 	flag_to_del = 0;
-	flag->minField = -1;
 	while (!is_right_arg(format[i]) && format[i] != '.' && format[i])
 	{
 		while(ft_isdigit(format[i]) && format[i])
@@ -68,6 +67,7 @@ void	set_min_field_size(Flag *flag, va_list ap, char *format, int i)
 			flag_to_del = 0;
 			res /= 10;
 			flag->minField = res;
+			return (i);
 		}
 		if (format[i] == '*')
 		{
@@ -78,12 +78,14 @@ void	set_min_field_size(Flag *flag, va_list ap, char *format, int i)
 				res *= -1;
 			}
 			flag->minField = res;
+			return (i);
 		}
 		i++;
 	}
+	return (i);
 }
 
-void	set_max_arg_size(Flag *flag, char *format, int i)
+int		set_max_arg_size(Flag *flag, va_list ap, char *format, int i)
 {
 	int	res;
 	int	flag_to_del;
