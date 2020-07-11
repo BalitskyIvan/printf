@@ -1,42 +1,50 @@
 #include "../includes/printf.h"
 
-int	print_digit(int d, Flag flag)
+static void	putnbr(long long n)
 {
-	int min_val;
-	int i;
-	
-	i = 0;
-	if (flag.minValue > 0 && int_size(d) < flag.minValue)
-		min_val = flag.minValue;
+	if (n < 0)
+		n *= -1;
+	if (n >= 10)
+	{
+		putnbr(n / 10);
+		putnbr(n % 10);
+	}
 	else
-		min_val = int_size(d) - 1;
+		ft_putchar_fd(n + '0', 1);
+}
+
+int	print_digit(long long d, Flag flag)
+{
+	int i;
+
+	i = 0;
+	if (int_size(d) > flag.minValue && flag.minValue != 0)
+		flag.minValue = int_size(d);
+	flag.minField -= flag.minValue;
 	if (flag.isPrintLeft)
 	{
 		if (d < 0)
-		{
 			ft_putchar_fd('-', 1);
-			i++;
-		}
-		if (flag.minValue + 1 > int_size(d))
-			i += print_zero(int_size(d), flag.minValue + 1);
-		else if (flag.minField + 1 > int_size(d) && flag.isPrintNull)
-			i += print_zero(int_size(d), flag.minField + 1);
-		ft_putnbr_fd(d, 1);
-		i += print_whitespaces(flag.minField, min_val);
+		if (flag.minValue > int_size(d))
+			print_zero(int_size(d), flag.minValue);
+		else if (flag.isPrintNull)
+			i += print_zero(int_size(d), flag.minField);
+		else
+		{
+			if (flag.minValue != 0)
+				putnbr(d);
+			i += print_whitespaces(flag.minField, flag.minValue);
+			return (i + flag.minValue);
+		} 
+		if (flag.minValue != 0)
+			putnbr(d);
 	}
 	else
 	{
-		i += print_whitespaces(flag.minField, min_val);
-		if (d < 0)
-		{
-			ft_putchar_fd('-', 1);
-			i++;
-		}
-		if (flag.minValue + 1 > int_size(d))
-			i += print_zero(int_size(d), flag.minValue + 1);
-		else if (flag.minField + 1 > int_size(d) && flag.isPrintNull)
-			i += print_zero(int_size(d), flag.minField + 1);
-		ft_putnbr_fd(d, 1);
+		if (flag.isPrintNull)
+			i += print_zero(int_size(d), flag.minField);
+		else
+			i += print_whitespaces(flag.minField, flag.minValue);
 	}
 	i += int_size(d);
 	return (i);

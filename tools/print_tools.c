@@ -1,20 +1,20 @@
 #include "../includes/printf.h"
 
-int		int_size(int d)
+int		int_size(long long d)
 {
 	int i;
 
-	i = 1;
-	if (d == -2147483648)
-		return (10);
-	else if (d < 0)
-		d *= -1;
-	while (d >= 0)
+	i = 0;
+	if (d < 0)
 	{
-		if (d == 0)
-			d = -1;
-		else
-			d /= 10;
+		i++;
+		d *= -1;
+	}
+	if (d == 0)
+		i++;
+	while (d > 0)
+	{
+		d /= 10;
 		i++;
 	}
 	return (i);

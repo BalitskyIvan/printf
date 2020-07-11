@@ -41,8 +41,10 @@ int main() {
 	// ft_printf ("%50.5X\n", &c);
 	// printf ("%50.5x\n", &c);
 	int c = 43435;
-	printf("st17 %0.*d\n", 3, 0);
-	printf("st17 %30.*20d\n",20, 3);
+	//printf("st17 %0.*d\n", 3, 0);
+	ft_printf("%08.3d\n", -8473);
+	printf("%08.3d", -8473);
+	//printf("st17%30.*5d\n", -10, 3);
 
 //	ft_printf ("%50.5%x\n");
 	// printf ("%*10.20%     rt\n", -30);

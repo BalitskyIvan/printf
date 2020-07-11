@@ -12,7 +12,10 @@ int	print_percent(Flag flag)
 	}
 	else
 	{
-		i += print_whitespaces(flag.minField, 1);
+		if (!flag.isPrintNull)
+			i += print_whitespaces(flag.minField, 1);
+		else
+			i += print_zero(1, flag.minField);
 		ft_putchar_fd('%', 1);
 	}
 	return (i);

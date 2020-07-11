@@ -5,6 +5,8 @@ static void	print_hex(char *hex)
 	int i;
 	
 	i = 0;
+	if (!hex[i])
+		ft_putchar_fd('0', 1);
 	while(hex[i])
 	{
 		ft_putchar_fd(hex[i], 1);
@@ -49,7 +51,11 @@ int print_p(unsigned long long p, Flag flag)
 	if (get_string_size(res) < flag.minValue)
 		min_val = flag.minValue;
 	else
+	{
 		min_val = get_string_size(res);
+		if (min_val == 0)
+			min_val = 1;
+	}
 	if (flag.isPrintLeft)
 	{
 		ft_putchar_fd('0', 1);

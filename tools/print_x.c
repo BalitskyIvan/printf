@@ -21,6 +21,13 @@ static char *convert_hex(int is_upper, unsigned int val)
 
 	count = 0;
 	val_copy = val;
+	if (val == 0)
+	{
+		res = malloc(2);
+		res[1] = '\0';
+		res[0] = '0';
+		return (res);
+	}
 	if (!is_upper)
 		hex = "0123456789abcdef";
 	else

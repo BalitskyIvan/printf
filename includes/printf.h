@@ -22,14 +22,14 @@ typedef struct		Counter
 	int		size;
 }					Counter;
 
-int					int_size(int d);
+int					int_size(long long d);
 int					u_int_size(unsigned int u);
 int					get_string_size(char *s);
 int					sizeof_double(double d);
 int					print_zero(int size, int min_arg_size);
 int					print_char(char c, Flag flag);
 int					print_string(char *s, Flag flag);
-int					print_digit(int d, Flag flag);
+int					print_digit(long long d, Flag flag);
 int					print_x(unsigned int x, Flag flag);
 int					print_p(unsigned long long p, Flag flag);
 int					print_unsigned_dec(unsigned int u, Flag flag);
@@ -47,5 +47,5 @@ Flag				parse_flags(char *format, va_list ap, int i);
 int					ft_printf(char *format, ...);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
-void				ft_putnbr_fd(int n, int fd);
+void				ft_putnbr_fd(long long n, int fd);
 #endif
