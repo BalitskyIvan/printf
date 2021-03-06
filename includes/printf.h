@@ -1,61 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmallado <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/13 13:12:29 by lmallado          #+#    #+#             */
+/*   Updated: 2020/07/13 13:12:32 by lmallado         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PRINTF_H
 # define PRINTF_H
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
 
-typedef struct		Flag
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
+
+typedef struct		s_flags
 {
-	int		isPrintNull;
-	int		isPrintLeft;
-	int		minField;
-	int		minValue;
-	int		iterator;
-	char	argType;
-}					Flag;
+	int				is_print_null;
+	int				is_print_left;
+	int				min_field;
+	int				min_value;
+	int				iterator;
+	char			arg_type;
+}					t_flags;
 
-typedef struct		Counter
+typedef struct		s_counter
 {
-	int		iterator;
-	int		size;
-}					Counter;
+	int				iterator;
+	int				size;
+}					t_counter;
 
-typedef struct		FloatConverter
-{
-	char	*str1;
-	char	*str2;
-	int		is_minus;
-}					FloatConverter;
-
-int					int_size(int d);
+int					int_size(long long d);
 int					u_int_size(unsigned int u);
 int					get_string_size(char *s);
 int					sizeof_double(double d);
 int					print_zero(int size, int min_arg_size);
-int					print_char(char c, Flag flag);
-int					print_string(char *s, Flag flag);
-int					print_digit(int d, Flag flag);
-int					print_x(unsigned int x, Flag flag);
-int					print_p(unsigned long long x, Flag flag);
-int					print_f(double f, Flag flag);
-int					print_e(double f, Flag flag);
-int					print_g(double f, Flag flag);
-Counter				print_arg(Flag flag, va_list ap, char *format, Counter counter);
-int					print_percent(Flag flag);
-int					print_unsigned_dec(unsigned int u, Flag flag);
+int					print_char(char c, t_flags flag);
+int					print_string(char *s, t_flags flag);
+int					print_digit(long long d, t_flags flag);
+int					print_x(unsigned int x, t_flags flag);
+int					print_p(unsigned long long p, t_flags flag);
+int					print_unsigned_dec(unsigned int u, t_flags flag);
+int					print_percent(t_flags flag);
+t_counter			print_arg(t_flags flag, va_list ap,
+char *format, t_counter counter);
 int					print_whitespaces(int count, int arg_size);
-void				set_max_arg_size(Flag *flag, char *format, int i);
-void				set_min_field_size(Flag *flag, char *format, int i);
-void				set_left_or_zero(Flag *flag, char *format, int i);
-void				set_arg(Flag *flag, char *format, int i);
+int					set_max_arg_size(t_flags *flag, va_list ap,
+char *format, int i);
+int					set_min_field_size(t_flags *flag, va_list ap,
+char *format, int i);
+void				set_left_or_zero(t_flags *flag, char *format, int i);
+void				set_arg(t_flags *flag, char *format, int i);
 int					ft_isdigit(int ch);
 int					is_right_arg(char c);
-int					parse_args(Flag flag, char *format, va_list ap, int i);
-Flag				parse_flags(char *format, int i);
+int					parse_args(t_flags flag, char *format, va_list ap, int i);
+t_flags				parse_flags(char *format, va_list ap, int i);
+char				*convert_hex(int is_upper, unsigned int val);
 int					ft_printf(char *format, ...);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
-void				ft_putnbr_fd(int n, int fd);
-FloatConverter		convert_to_char(double f, int after_dot);
+void				ft_putnbr_fd(long long n, int fd);
 #endif

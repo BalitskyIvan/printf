@@ -1,6 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lmallado <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/07/13 19:21:22 by lmallado          #+#    #+#              #
+#    Updated: 2020/07/13 19:21:30 by lmallado         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
 
-HEADER = ./includes/printf.h
+HEADER = includes/
 
 SRCS = ./libft/ft_putchar_fd.c \
 	./libft/ft_putnbr_fd.c \
@@ -10,6 +22,9 @@ SRCS = ./libft/ft_putchar_fd.c \
 	./SRCS/print_arg.c \
 	./SRCS/parse_flags.c \
 	./tools/parse_arg_tool.c \
+	./tools/parse_min_field.c \
+	./tools/parse_min_val.c \
+	./tools/convert_hex.c \
 	./tools/print_tools.c \
 	./tools/print_c.c \
 	./tools/print_s.c \
@@ -17,59 +32,32 @@ SRCS = ./libft/ft_putchar_fd.c \
 	./tools/print_u.c \
 	./tools/print_x.c \
 	./tools/print_p.c \
-	./tools/print_f.c \
-	./tools/print_e.c \
-	./tools/print_g.c \
-	./tools/print_f_tools.c \
 	./tools/print_percent.c
-	
-	
 
-SRCS_O = ft_putchar_fd.o \
-	ft_putnbr_fd.o \
-	ft_putstr_fd.o \
-	ft_isdigit.o \
-	printf.o \
-	print_arg.o \
-	parse_flags.o \
-	parse_arg_tool.o \
-	print_tools.o \
-	print_c.o \
-	print_s.o \
-	print_d.o \
-	print_u.o \
-	print_x.o \
-	print_p.o \
-	print_f.o \
-	print_e.o \
-	print_g.o \
-	print_f_tools.o \
-	print_percent.o
+O_FILE = $(patsubst %.c,%.o,$(SRCS))
+D_FILE = $(patsubst %.c,%.d,$(SRCS))
 
-BONUS_SRCS =
-
-O_FILE = $(SRCS:.c=.o)
-
-O_BONUS = $(BONUS_SRCS:.c=.o)
 
 FLAGS = -Wall
 
 all: $(NAME)
 
-$(NAME): $(HEADER) $(O_FILE)
-	ar rc $(NAME) $(SRCS_O)
+$(NAME): $(O_FILE)
+	ar rc $(NAME) $?
 	ranlib $(NAME)
 
-$(O_FILE): %.o:%.c $(HEADER)
-	gcc -c $(FLAGS) -I./includes $<
+%.o: %.c ./includes/printf.h
+	gcc -c $(FLAGS) -I$(HEADER) -c $< -o $@ -MD
 
 clean:
-	rm -rf $(SRCS_O)
-	rm -rf $(O_BONUS)
+	rm -f $(O_FILE)
+	rm -f $(D_FILE)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
 
 re:		fclean all
+
+include $(wildcards $(D_FILE))
 
 .PHONY : all clean fclean re

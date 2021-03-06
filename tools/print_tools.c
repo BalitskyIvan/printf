@@ -1,14 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_tools.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmallado <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/13 15:52:36 by lmallado          #+#    #+#             */
+/*   Updated: 2020/07/13 15:52:37 by lmallado         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/printf.h"
 
-int		int_size(int d)
+int		int_size(long long d)
 {
 	int i;
 
-	i = 1;
-	if (d == -2147483648)
-		return (10);
-	else if (d < 0)
+	i = 0;
+	if (d < 0)
+	{
+		i++;
 		d *= -1;
+	}
+	if (d == 0)
+		i++;
 	while (d > 0)
 	{
 		d /= 10;
@@ -22,6 +37,8 @@ int		u_int_size(unsigned int u)
 	int i;
 
 	i = 1;
+	if (u == 0)
+		i++;
 	while (u > 0)
 	{
 		u /= 10;
@@ -33,7 +50,7 @@ int		u_int_size(unsigned int u)
 int		print_whitespaces(int count, int arg_size)
 {
 	int i;
-	
+
 	i = 0;
 	count -= arg_size;
 	while (count > 0)
@@ -48,7 +65,7 @@ int		print_whitespaces(int count, int arg_size)
 int		print_zero(int size, int min_arg_size)
 {
 	int i;
-	
+
 	i = 0;
 	while (min_arg_size > size)
 	{
